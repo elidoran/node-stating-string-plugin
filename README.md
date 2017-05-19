@@ -23,7 +23,7 @@ var buildBuilder = require('@stating/builder')
 // build a new builder to add plugins to and use
 var builder = buildBuilder()
 
-// add a plugin which provides a static string consumer node.
+// add this plugin
 builder.use('@stating/string-plugin')
 
 // now build a node to match the word "true"
@@ -43,12 +43,12 @@ stating.add('true', trueNode)
 
 ## Custom Success
 
-When the node matches it increments `index` and called `control.next()`.
+When the node matches it increments `index` and calls `control.next()`.
 
 Customize what it does by providing a function:
 
 ```javascript
-var trueNode = builder.string('true', function(){
+var trueNode = builder.string('true', function() {
   this.someContextFunction()
   this.index = this.index + 4
   control.next(N.someNode, N.anotherNode)
@@ -60,6 +60,20 @@ stating.add('true', trueNode)
 The contents of your function are inserted into the generated node function's "else" statement reached upon a successful match. Use the usual stating node args `control`, `N`, `context`.
 
 Note, you must call `control.next()` with or without nodes to properly advance.
+
+If you're going to test your success function then specify the standard stating parameters in the function declaration: `function(control, N, context)`. Up to you. The code is placed into another function so, for example, `control` is already defined there.
+
+
+## Debugging Breakpoint
+
+To add a debugging breakpoint simply wrap the function and set a breakpoint.
+
+```javascript
+function wrappedTrueNode(control, N, context) {
+  // set a breakpoint here... then step into trueNode.
+  trueNode.call(context, control, N, context)  
+}
+```
 
 
 # [MIT License](LICENSE)
