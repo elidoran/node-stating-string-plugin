@@ -29,8 +29,8 @@ builder.use('@stating/string-plugin')
 // now build a node to match the word "true"
 var trueNode = builder.string('true')
 
-// $true is a function which will wait for 4 bytes of input
-// and then test if the next 4 bytes is 'true'.
+// trueNode is a function which will wait for 4 bytes of input
+// and then test if the next 4 bytes equals 'true'.
 // it will control.fail() if it's not.
 // it will control.next() if it is.
 
