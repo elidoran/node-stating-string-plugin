@@ -1,0 +1,45 @@
+{
+  "name": "@stating/string-plugin",
+  "version": "0.1.0",
+  "description": "Build nodes for stating which match an exact string",
+  "main": "lib/index.js",
+  "files": [
+    "lib/index.js"
+  ],
+  "keywords": [
+    "stating",
+    "builder",
+    "plugin",
+    "node",
+    "string",
+    "strings"
+  ],
+  "author": "Eli Doran <eli+npm@elidoran.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register --reporter spec --bail --check-leaks test/lib",
+    "test4": "nave use 4.8 npm test",
+    "test6": "nave use 6.10 npm test",
+    "test7": "nave use 7.10 npm test",
+    "test-all": "npm run test4 && npm run test6 && npm run test7",
+    "coverage": "istanbul cover -x 'benchmark/**' -x 'examples/**' -x 'build/**' _mocha -- --compilers coffee:coffee-script/register --require ./build/coverage.js -R spec test/lib",
+    "coverage-lcov": "istanbul cover -x 'benchmark/**' -x 'examples/**' -x 'build/**' _mocha --report lcovonly -- --compilers coffee:coffee-script/register --require ./build/coverage.js -R spec test/lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/elidoran/node-stating-string-plugin.git"
+  },
+  "bugs": "http://github.com/elidoran/node-stating-string-plugin/issues",
+  "devDependencies": {
+    "coffee-script": "^1.12.6",
+    "coveralls": "^2.13.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.1",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nave": "^2.2.3"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=4"
+  }
+}
