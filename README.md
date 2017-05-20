@@ -66,13 +66,16 @@ If you're going to test your success function then specify the standard stating 
 
 ## Debugging Breakpoint
 
-To add a debugging breakpoint simply wrap the function and set a breakpoint.
+To add a debugging breakpoint wrap the generated function and set a breakpoint.
 
 ```javascript
 function wrappedTrueNode(control, N, context) {
   // set a breakpoint here... then step into trueNode.
   trueNode.call(context, control, N, context)  
 }
+
+// add the wrapped version instead.
+stating.add('true', wrappedTrueNode)
 ```
 
 
