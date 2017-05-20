@@ -1,6 +1,6 @@
 {
   "name": "@stating/string-plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Build nodes for stating which match an exact string",
   "main": "lib/index.js",
   "files": [
